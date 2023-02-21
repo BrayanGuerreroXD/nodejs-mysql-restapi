@@ -1,21 +1,14 @@
 import { Router } from "express";
+import { employees } from "../controllers/employees.controller.js";
 
 const router = Router();
 
-router.get("/employees", (req, res) => {
-  res.send("Get employees");
-});
+router.get("/employees", employees.getEmployees);
 
-router.post("/employees", (req, res) => {
-  res.send("Post employees");
-});
+router.post("/employees", employees.createEmployee);
 
-router.put("/employees", (req, res) => {
-  res.send("Put employees");
-});
+router.put("/employees", employees.updateEmployee);
 
-router.delete("/employees", (req, res) => {
-  res.send("Delete employees");
-});
+router.delete("/employees", employees.deleteEmployee);
 
 export default router;
