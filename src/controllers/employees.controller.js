@@ -41,6 +41,17 @@ export const updateEmployee = (req, res) => {
 };
 
 // Delete employee from DB
-export const deleteEmployee = (req, res) => {
-  res.send("Delete employee");
+export const deleteEmployee = async (req, res) => {
+  const [result] = await pool.query("DELETE FROM employee WHERE id = ?", [
+    req.params.id,
+  ]);
+
+  if (result.affectedRows <= 0) {
+    res.status(404).json({
+      message: "Employee not found",
+    });
+  }
+
+  // Deletion successful, no response content
+  res.sendStatus(204);
 };
