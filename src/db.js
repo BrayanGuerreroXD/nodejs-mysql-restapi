@@ -1,10 +1,17 @@
 import { createPool } from "mysql2/promise";
+import {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_DATABASE,
+} from "./config.js";
 
 export const pool = createPool({
-  host: "us-east.connect.psdb.cloud",
-  user: "q76nehyan2s3ah0mq1df",
-  password: "pscale_pw_NvCBRRbD3ZRyk4niX7OBemO2LwaF0fwcBkfiwyiNxgY",
-  database: "expressdb",
+  host: DB_HOST,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_DATABASE,
   ssl: {
     rejectUnauthorized: false,
   },
